@@ -6,8 +6,8 @@ export default {
     ],
     theme: {
         fontSize: {
-            base: '22px',
-            lg: '26px'
+            base: '24px',
+            lg: '28px'
         },
         extend: {
             colors: {
