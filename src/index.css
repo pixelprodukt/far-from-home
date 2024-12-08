@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Cormorant';
+        font-display: swap;
+        src: url(./assets/Cormorant/Cormorant-VariableFont_wght.ttf) format('truetype');
+    }
+}
