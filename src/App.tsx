@@ -1,8 +1,15 @@
-import Button from './components/Button';
+import { Briefcase, Feather } from 'react-feather';
+import TextButton from './components/TextButton';
+import IconButton from './components/IconButton';
 
 const App = () => {
     return (
         <>
+            <div className='p-2 flex flex-wrap justify-end'>
+            <IconButton onClick={() => { console.log('hello from icon button 2') }}><Briefcase color='#e5e7eb' size='22' /></IconButton>
+                <IconButton onClick={() => { console.log('hello from icon button 1') }}><Feather color='#e5e7eb' size='22' /></IconButton>
+            </div>
+
             <div className='p-12'></div>
             <div className='container mx-auto text-light-amber 2xl:w-1/3 xl:w-1/2 lg:w-1/2 md:w-full 2xl:px-0 xl:px-0 lg:px-0 md:px-0 sm:px-0 px-8'>
 
@@ -25,9 +32,9 @@ const App = () => {
                 </section>
 
                 <div>
-                    <Button title='1. Go through the gate' /><br />
-                    <Button title='2. Examine the gate' /><br />
-                    <Button title='3. Get back into the car' /><br />
+                    <TextButton onClick={() => { console.log('hello from button 1') }} title='1. Go through the gate' /><br />
+                    <TextButton onClick={() => { console.log('hello from button 2') }} title='2. Examine the gate' /><br />
+                    <TextButton onClick={() => { console.log('hello from button 3') }} title='3. Get back into the car' /><br />
                 </div>
 
             </div>
