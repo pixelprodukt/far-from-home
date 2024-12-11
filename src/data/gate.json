@@ -1,0 +1,10 @@
+{
+    "id": "GATE",
+    "text": "There are no lights except the one from the moon and stars. The big iron gate looms over you. It has long spikes at the top and strange looking ornamentation in the middle where both wings meet. Through the gate you can see a dark shadow with the silhouette of an old mansion. A path is leading towards it.",
+    "actions": [
+        {
+            "text": "Go to through gate.",
+            "moveToRoomId": "FRONT_YARD"
+        }
+    ]
+}
