@@ -19,14 +19,14 @@
         {
             "type": "MOVE",
             "text": "Go to front yard.",
-            "roomToMoveId": "front_yard"
+            "moveToRoomId": "FRONT_YARD"
         },
         {
             "type": "MOVE",
             "text": "Go inside.",
             "requires": ["FRONT_DOOR_OPENED"],
             "resolves": [],
-            "roomToMoveId": "entry_hall"
+            "moveToRoomId": "entry_hall"
         }
     ]
 }

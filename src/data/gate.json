@@ -3,8 +3,23 @@
     "text": "There are no lights except the one from the moon and stars. The big iron gate looms over you. It has long spikes at the top and strange looking ornamentation in the middle where both wings meet. Through the gate you can see a dark shadow with the silhouette of an old mansion. A path is leading towards it.",
     "actions": [
         {
+            "type": "LOOK",
+            "text": "Examine the gate.",
+            "moveToRoomId": "FRONT_YARD"
+        },
+        {
             "type": "MOVE",
             "text": "Go to through gate.",
+            "moveToRoomId": "FRONT_YARD"
+        },
+        {
+            "type": "MOVE",
+            "text": "Get back into the car.",
+            "moveToRoomId": "FRONT_YARD"
+        },
+        {
+            "type": "LOOK",
+            "text": "Search the trunk. (After point 2 was selected)",
             "moveToRoomId": "FRONT_YARD"
         }
     ]

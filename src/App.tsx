@@ -4,10 +4,18 @@ import IconButton from './components/IconButton';
 import GATE_ROOM_DATA from './data/gate.json';
 import { RoomDto } from './models/dto/Room.dto';
 import { useState } from 'react';
+import { RoomHandler } from './classes/RoomHandler';
 
 const App = () => {
     const gateRoomData = GATE_ROOM_DATA as RoomDto;
+
+    const roomHandler = new RoomHandler();
+
     const [room, setRoom] = useState(gateRoomData);
+
+    const moveToRoom = (roomId: string) => {
+        setRoom(roomHandler.getRoomById(roomId));
+    };
 
     return (
         <>
@@ -26,7 +34,13 @@ const App = () => {
                 </section>
 
                 <div>
-                    {room.actions.map(action => <div><TextButton onClick={() => { console.log('hello from button 1') }} title={action.text} /></div>)}
+                    {room.actions.map((action, index) => {
+                        return (
+                            <div>
+                                <TextButton onClick={() => { moveToRoom(action.moveToRoomId) }} title={`${index + 1}) ${action.text}`} />
+                            </div>
+                        );
+                    })}
                 </div>
 
             </div>

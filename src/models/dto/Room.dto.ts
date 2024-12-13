@@ -4,5 +4,8 @@ import { RoomId } from '../RoomId.enum';
 export interface RoomDto {
     id: RoomId;
     text: string;
-    actions: ActionDto[]
+    actions: ActionDto[];
+    actText?: string;
+    requires?: any[];
+    resolves?: any[];
 }
