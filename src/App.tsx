@@ -1,8 +1,14 @@
 import { Briefcase, Feather } from 'react-feather';
 import TextButton from './components/TextButton';
 import IconButton from './components/IconButton';
+import GATE_ROOM_DATA from './data/gate.json';
+import { RoomDto } from './models/dto/Room.dto';
+import { useState } from 'react';
 
 const App = () => {
+    const gateRoomData = GATE_ROOM_DATA as RoomDto;
+    const [room, setRoom] = useState(gateRoomData);
+
     return (
         <>
             <div className='p-2 flex flex-wrap justify-end'>
@@ -15,26 +21,12 @@ const App = () => {
 
                 <section>
                     <p className='text-base mb-6'>
-                        This road feels like it's going on forever. Night falls and the stars looks very dim
-                        and different today. At least as far as you can tell from that small open strip above
-                        your head. To your left and right are nothing but big trees. Your cars fuel want last
-                        much longer and you really need to rest a bit. Suddenly a big old iron gate emerges
-                        in front of you out of the darkness. You hit the brakes and come to a halt. The road
-                        ends here. You get out of your car. Where are you? And why are you here? You don't
-                        know and don't care at the moment. You just know, you are far from home.
+                        {room.text}
                     </p>
-                    {/* <p className='text-base mb-6'>
-                        There are no lights except the one from the moon and stars. The big iron gate looms
-                        over you. It has long spikes at the top and strange looking ornamentation in the
-                        middle where both wings meet. Through the gate you can see a dark shadow with the
-                        silhouette of an old mansion. A path is leading towards it.
-                    </p> */}
                 </section>
 
                 <div>
-                    <TextButton onClick={() => { console.log('hello from button 1') }} title='1. Go through the gate' /><br />
-                    <TextButton onClick={() => { console.log('hello from button 2') }} title='2. Examine the gate' /><br />
-                    <TextButton onClick={() => { console.log('hello from button 3') }} title='3. Get back into the car' /><br />
+                    {room.actions.map(action => <div><TextButton onClick={() => { console.log('hello from button 1') }} title={action.text} /></div>)}
                 </div>
 
             </div>

@@ -1,0 +1,21 @@
+{
+    "id": "FRONT_YARD",
+    "text": "A decorative fountain adorns the square in front of the manor. Once, a sorrowful little angel poured water into its basin, but now the edge is overgrown with weeds, and the angel's jug is cracked. Old flowerbeds line the path with sharp-edged underbrush that seems to wind around your ankles with every step. You can also see a narrow path which leads to the side of the house.",
+    "actions": [
+        {
+            "type": "INSPECT",
+            "text": "Inspect the fountain.",
+            "moveToRoomId": "FRONT_YARD"
+        },
+        {
+            "type": "MOVE",
+            "text": "Go to the front door.",
+            "moveToRoomId": "FRONT_DOOR"
+        },
+        {
+            "type": "MOVE",
+            "text": "Go to the side of the house.",
+            "moveToRoomId": "SIDEWALL"
+        }
+    ]
+}
