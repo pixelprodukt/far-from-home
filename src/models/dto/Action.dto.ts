@@ -8,5 +8,5 @@ export interface ActionDto {
     actions?: ActionDto[];
     resultText?: string;
     setsStates: string[];
-    readsStates: string[]
+    readsStates: string[];
 }

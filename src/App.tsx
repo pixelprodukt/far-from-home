@@ -15,6 +15,7 @@ const App = () => {
     const roomHandler = new RoomHandler();
 
     const [room, setRoom] = useState(gateRoomData);
+    const [gamestate, setGamestate] = useState(GAMESTATE);
 
     const handleMoveToRoom = (roomId: string): void => {
         setRoom(roomHandler.getRoomById(roomId));
@@ -26,9 +27,14 @@ const App = () => {
     };
 
     const handle = (action: ActionDto): void => {
-        action.setsStates.forEach(state => GAMESTATE[state] = true);
+        action.setsStates.forEach(state => {
+            if (!GAMESTATE[state]) {
+                GAMESTATE[state] = true;
+                setGamestate({ ...GAMESTATE });
+            }
+        });
 
-        switch(action.type) {
+        switch (action.type) {
             case ActionType.MOVE:
                 handleMoveToRoom(action.moveToRoomId);
                 break;
@@ -58,8 +64,8 @@ const App = () => {
 
                 <div>
                     {room.actions.map((action, index) => {
-                        const isShown = action.readsStates.map(state => GAMESTATE[state]);
-                        if (isShown.every(b => b === true) || !isShown.length) {
+                        const hasAllRequiredStates = action.readsStates.map(state => gamestate[state]).every(bool => bool === true);
+                        if (hasAllRequiredStates || !action.readsStates.length) {
                             return (
                                 <div key={index}>
                                     <TextButton onClick={() => { handle(action) }} title={`${index + 1}) ${action.label}`} />
