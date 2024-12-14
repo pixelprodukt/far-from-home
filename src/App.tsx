@@ -19,8 +19,9 @@ const App = () => {
     const [currentText, setCurrentText] = useState(room.text);
 
     const handleMoveToRoom = (roomId: string): void => {
-        setRoom((r) => r = roomHandler.getRoomById(roomId));
-        setCurrentText((current) => current = room.text);
+        const room = roomHandler.getRoomById(roomId);
+        setRoom(room);
+        setCurrentText(room.text);
     };
 
     const handleLook = (action: ActionDto): void => {
