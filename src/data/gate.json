@@ -4,23 +4,29 @@
     "actions": [
         {
             "type": "LOOK",
-            "text": "Examine the gate.",
-            "moveToRoomId": "FRONT_YARD"
+            "label": "Examine the gate.",
+            "moveToRoomId": "FRONT_YARD",
+            "setsStates": [],
+            "readsStates": []
         },
         {
             "type": "MOVE",
-            "text": "Go to through gate.",
-            "moveToRoomId": "FRONT_YARD"
-        },
-        {
-            "type": "MOVE",
-            "text": "Get back into the car.",
-            "moveToRoomId": "FRONT_YARD"
+            "label": "Go to through gate.",
+            "moveToRoomId": "FRONT_YARD",
+            "setsStates": [],
+            "readsStates": []
         },
         {
             "type": "LOOK",
-            "text": "Search the trunk. (After point 2 was selected)",
-            "moveToRoomId": "FRONT_YARD"
+            "label": "Get back into the car.",
+            "setsStates": ["HAS_OPENED_TRUNK"],
+            "readsStates": []
+        },
+        {
+            "type": "LOOK",
+            "label": "Search the trunk. (After point 2 was selected)",
+            "setsStates": [],
+            "readsStates": ["HAS_OPENED_TRUNK"]
         }
     ]
 }

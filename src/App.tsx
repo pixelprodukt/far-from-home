@@ -5,6 +5,9 @@ import GATE_ROOM_DATA from './data/gate.json';
 import { RoomDto } from './models/dto/Room.dto';
 import { useState } from 'react';
 import { RoomHandler } from './classes/RoomHandler';
+import { ActionDto } from './models/dto/Action.dto';
+import { ActionType } from './models/Action.enum';
+import { GAMESTATE } from './data/GameState';
 
 const App = () => {
     const gateRoomData = GATE_ROOM_DATA as RoomDto;
@@ -13,8 +16,28 @@ const App = () => {
 
     const [room, setRoom] = useState(gateRoomData);
 
-    const moveToRoom = (roomId: string) => {
+    const handleMoveToRoom = (roomId: string): void => {
         setRoom(roomHandler.getRoomById(roomId));
+    };
+
+    const handleLook = (action: ActionDto): void => {
+        // TODO: Stub
+        console.log('handleLook:', action);
+    };
+
+    const handle = (action: ActionDto): void => {
+        action.setsStates.forEach(state => GAMESTATE[state] = true);
+
+        switch(action.type) {
+            case ActionType.MOVE:
+                handleMoveToRoom(action.moveToRoomId);
+                break;
+            case ActionType.LOOK:
+                handleLook(action);
+                break;
+            default:
+                throw new Error();
+        }
     };
 
     return (
@@ -35,11 +58,14 @@ const App = () => {
 
                 <div>
                     {room.actions.map((action, index) => {
-                        return (
-                            <div>
-                                <TextButton onClick={() => { moveToRoom(action.moveToRoomId) }} title={`${index + 1}) ${action.text}`} />
-                            </div>
-                        );
+                        const isShown = action.readsStates.map(state => GAMESTATE[state]);
+                        if (isShown.every(b => b === true) || !isShown.length) {
+                            return (
+                                <div key={index}>
+                                    <TextButton onClick={() => { handle(action) }} title={`${index + 1}) ${action.label}`} />
+                                </div>
+                            );
+                        }
                     })}
                 </div>
 

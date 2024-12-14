@@ -4,23 +4,31 @@
     "actions": [
         {
             "type": "LOOK",
-            "text": "Inspect the fountain.",
-            "moveToRoomId": "FRONT_YARD"
+            "label": "Inspect the fountain.",
+            "moveToRoomId": "FRONT_YARD",
+            "setsStates": [],
+            "readsStates": []
         },
         {
             "type": "MOVE",
-            "text": "Go to the front door.",
-            "moveToRoomId": "FRONT_DOOR"
+            "label": "Go to the front door.",
+            "moveToRoomId": "FRONT_DOOR",
+            "setsStates": [],
+            "readsStates": []
         },
         {
             "type": "MOVE",
-            "text": "Go to the side of the house.",
-            "moveToRoomId": "SIDEWALL"
+            "label": "Go to the side of the house.",
+            "moveToRoomId": "SIDEWALL",
+            "setsStates": [],
+            "readsStates": []
         },
         {
             "type": "MOVE",
-            "text": "Go back to the gate.",
-            "moveToRoomId": "GATE"
+            "label": "Go back to the gate.",
+            "moveToRoomId": "GATE",
+            "setsStates": [],
+            "readsStates": []
         }
     ]
 }
