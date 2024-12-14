@@ -1,4 +1,5 @@
 export enum ActionType {
     MOVE = 'MOVE',
-    LOOK = 'LOOK'
+    LOOK = 'LOOK',
+    ITEM = 'ITEM'
 }

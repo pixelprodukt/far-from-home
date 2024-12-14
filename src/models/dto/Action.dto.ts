@@ -4,7 +4,7 @@ import { RoomId } from '../RoomId.enum';
 export interface ActionDto {
     type: ActionType;
     label: string;
-    moveToRoomId: RoomId;
+    moveToRoomId?: RoomId;
     actions?: ActionDto[];
     resultText?: string;
     setsStates: string[];

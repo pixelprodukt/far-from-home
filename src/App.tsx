@@ -16,14 +16,22 @@ const App = () => {
 
     const [room, setRoom] = useState(gateRoomData);
     const [gamestate, setGamestate] = useState(GAMESTATE);
+    const [currentText, setCurrentText] = useState(room.text);
 
     const handleMoveToRoom = (roomId: string): void => {
-        setRoom(roomHandler.getRoomById(roomId));
+        setRoom((r) => r = roomHandler.getRoomById(roomId));
+        setCurrentText((current) => current = room.text);
     };
 
     const handleLook = (action: ActionDto): void => {
         // TODO: Stub
         console.log('handleLook:', action);
+        setCurrentText(action.resultText!);
+    };
+
+    const handleItem = (action: ActionDto): void => {
+        // TODO: Stub
+        console.log('handleItem:', action);
     };
 
     const handle = (action: ActionDto): void => {
@@ -36,10 +44,13 @@ const App = () => {
 
         switch (action.type) {
             case ActionType.MOVE:
-                handleMoveToRoom(action.moveToRoomId);
+                handleMoveToRoom(action.moveToRoomId!);
                 break;
             case ActionType.LOOK:
                 handleLook(action);
+                break;
+            case ActionType.ITEM:
+                handleItem(action);
                 break;
             default:
                 throw new Error();
@@ -58,7 +69,7 @@ const App = () => {
 
                 <section>
                     <p className='text-base mb-6'>
-                        {room.text}
+                        {currentText}
                     </p>
                 </section>
 

@@ -5,7 +5,7 @@
         {
             "type": "LOOK",
             "label": "Examine the gate.",
-            "moveToRoomId": "FRONT_YARD",
+            "resultText": "Upon closer inspection, the ornamentation on the gate seems strangely unreal. The intricately curved metal rods taper toward their ends and twist oddly into one another. It looks as though they become thinner and thinner until they form a thread, from which other patterns emerge.",
             "setsStates": [],
             "readsStates": []
         },
@@ -19,14 +19,17 @@
         {
             "type": "LOOK",
             "label": "Get back into the car.",
+            "resultText": "You get into your car and wonder if you should just drive away. But the fuel tank doesn’t have much left, and you’re far from home. Instead, you press the button for the trunk, which pops open with a soft click.",
             "setsStates": ["HAS_OPENED_TRUNK"],
             "readsStates": []
         },
         {
-            "type": "LOOK",
-            "label": "Search the trunk. (After point 2 was selected)",
+            "type": "ITEM",
+            "label": "Search the trunk.",
+            "resultText": "You find a flashlight and a crowbar. Strange, you can’t even remember packing either of them.",
             "setsStates": [],
-            "readsStates": ["HAS_OPENED_TRUNK"]
+            "readsStates": ["HAS_OPENED_TRUNK"],
+            "items": ["FLASHLIGHT", "CROWBAR"]
         }
     ]
 }
