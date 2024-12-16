@@ -2,32 +2,34 @@ import { Briefcase, Feather } from 'react-feather';
 import TextButton from './components/TextButton';
 import IconButton from './components/IconButton';
 import GATE_ROOM_DATA from './data/gate.json';
-import { RoomDto } from './models/dto/Room.dto';
+import { SceneDto } from './models/dto/Scene.dto';
 import { useState } from 'react';
-import { RoomHandler } from './classes/RoomHandler';
+import { SceneHandler } from './classes/SceneHandler';
 import { ActionDto } from './models/dto/Action.dto';
 import { ActionType } from './models/Action.enum';
 import { GAMESTATE } from './data/GameState';
 
 const App = () => {
-    const gateRoomData = GATE_ROOM_DATA as RoomDto;
+    const gateRoomData = GATE_ROOM_DATA as SceneDto;
 
-    const roomHandler = new RoomHandler();
+    const roomHandler = new SceneHandler([]);
 
     const [room, setRoom] = useState(gateRoomData);
     const [gamestate, setGamestate] = useState(GAMESTATE);
-    const [currentText, setCurrentText] = useState(room.text);
+    const [currentText, setCurrentText] = useState(room.description);
+    const [showBackToRoomTextBtn, setShowBackToRoomTextBtn] = useState(false);
 
     const handleMoveToRoom = (roomId: string): void => {
-        const room = roomHandler.getRoomById(roomId);
-        setRoom(room);
-        setCurrentText(room.text);
+        const room = roomHandler.getSceneById(roomId);
+        //setRoom(room);
+        setCurrentText(room.description);
     };
 
     const handleLook = (action: ActionDto): void => {
         // TODO: Stub
         console.log('handleLook:', action);
         setCurrentText(action.resultText!);
+        setShowBackToRoomTextBtn(true);
     };
 
     const handleItem = (action: ActionDto): void => {
@@ -45,7 +47,7 @@ const App = () => {
 
         switch (action.type) {
             case ActionType.MOVE:
-                handleMoveToRoom(action.moveToRoomId!);
+                handleMoveToRoom(action.nextSceneId!);
                 break;
             case ActionType.LOOK:
                 handleLook(action);
@@ -56,6 +58,15 @@ const App = () => {
             default:
                 throw new Error();
         }
+    };
+
+    const setCurrentTextToRoomText = (): void => {
+        setCurrentText(room.description);
+        setShowBackToRoomTextBtn(false);
+    };
+
+    const backButton = () => {
+        if (showBackToRoomTextBtn) return <button onClick={() => setCurrentTextToRoomText()}>back</button>;
     };
 
     return (
@@ -72,6 +83,7 @@ const App = () => {
                     <p className='text-base mb-6'>
                         {currentText}
                     </p>
+                    {backButton()}
                 </section>
 
                 <div>

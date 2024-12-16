@@ -1,4 +1,4 @@
-export enum RoomId {
+export enum SceneId {
     GATE = 'GATE',
     FRONT_YARD = 'FRONT_YARD',
     FRONT_DOOR = 'FRONT_DOOR',

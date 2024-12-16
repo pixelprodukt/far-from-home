@@ -1,10 +1,11 @@
+import { SceneId } from '../../classes/BaseScene';
 import { ActionType } from '../Action.enum';
-import { RoomId } from '../RoomId.enum';
 
 export interface ActionDto {
+    id: string;
     type: ActionType;
     label: string;
-    moveToRoomId?: RoomId;
+    nextSceneId?: SceneId;
     actions?: ActionDto[];
     resultText?: string;
     setsStates: string[];

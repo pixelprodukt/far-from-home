@@ -1,8 +1,9 @@
 {
     "id": "GATE",
-    "text": "There are no lights except the one from the moon and stars. The big iron gate looms over you. It has long spikes at the top and strange looking ornamentation in the middle where both wings meet. Through the gate you can see a dark shadow with the silhouette of an old mansion. A path is leading towards it.",
+    "description": "There are no lights except the one from the moon and stars. The big iron gate looms over you. It has long spikes at the top and strange looking ornamentation in the middle where both wings meet. Through the gate you can see a dark shadow with the silhouette of an old mansion. A path is leading towards it.",
     "actions": [
         {
+            "id": "1",
             "type": "LOOK",
             "label": "Examine the gate.",
             "resultText": "Upon closer inspection, the ornamentation on the gate seems strangely unreal. The intricately curved metal rods taper toward their ends and twist oddly into one another. It looks as though they become thinner and thinner until they form a thread, from which other patterns emerge.",
@@ -10,13 +11,15 @@
             "readsStates": []
         },
         {
+            "id": "2",
             "type": "MOVE",
             "label": "Go to through gate.",
-            "moveToRoomId": "FRONT_YARD",
+            "nextsceneId": "FRONT_YARD",
             "setsStates": [],
             "readsStates": []
         },
         {
+            "id": "3",
             "type": "LOOK",
             "label": "Get back into the car.",
             "resultText": "You get into your car and wonder if you should just drive away. But the fuel tank doesn’t have much left, and you’re far from home. Instead, you press the button for the trunk, which pops open with a soft click.",
@@ -24,6 +27,7 @@
             "readsStates": []
         },
         {
+            "id": "4",
             "type": "ITEM",
             "label": "Search the trunk.",
             "resultText": "You find a flashlight and a crowbar. Strange, you can’t even remember packing either of them.",
