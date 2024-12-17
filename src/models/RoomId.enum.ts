@@ -1,5 +1,6 @@
 export enum RoomId {
     GATE = 'GATE',
+    CAR = 'CAR',
     FRONT_YARD = 'FRONT_YARD',
     FRONT_DOOR = 'FRONT_DOOR',
     SIDEWALL = 'SIDEWALL',

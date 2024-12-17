@@ -1,35 +1,32 @@
 {
     "id": "GATE",
-    "text": "There are no lights except the one from the moon and stars. The big iron gate looms over you. It has long spikes at the top and strange looking ornamentation in the middle where both wings meet. Through the gate you can see a dark shadow with the silhouette of an old mansion. A path is leading towards it.",
+    "description": "There are no lights except the one from the moon and stars. The big iron gate looms over you. It has long spikes at the top and strange looking ornamentation in the middle where both wings meet. Through the gate you can see a dark shadow with the silhouette of an old mansion. A path is leading towards it.",
+    "states": {},
     "actions": [
         {
             "type": "LOOK",
             "label": "Examine the gate.",
-            "resultText": "Upon closer inspection, the ornamentation on the gate seems strangely unreal. The intricately curved metal rods taper toward their ends and twist oddly into one another. It looks as though they become thinner and thinner until they form a thread, from which other patterns emerge.",
+            "description": "Upon closer inspection, the ornamentation on the gate seems strangely unreal. The intricately curved metal rods taper toward their ends and twist oddly into one another. It looks as though they become thinner and thinner until they form a thread, from which other patterns emerge.",
             "setsStates": [],
-            "readsStates": []
+            "readsStates": [],
+            "requiresStates": []
         },
         {
             "type": "MOVE",
             "label": "Go to through gate.",
+            "failedDescription": "",
             "moveToRoomId": "FRONT_YARD",
             "setsStates": [],
-            "readsStates": []
+            "readsStates": [],
+            "requiresStates": []
         },
         {
-            "type": "LOOK",
+            "type": "MOVE",
             "label": "Get back into the car.",
-            "resultText": "You get into your car and wonder if you should just drive away. But the fuel tank doesn’t have much left, and you’re far from home. Instead, you press the button for the trunk, which pops open with a soft click.",
-            "setsStates": ["HAS_OPENED_TRUNK"],
-            "readsStates": []
-        },
-        {
-            "type": "ITEM",
-            "label": "Search the trunk.",
-            "resultText": "You find a flashlight and a crowbar. Strange, you can’t even remember packing either of them.",
+            "moveToRoomId": "CAR",
             "setsStates": [],
-            "readsStates": ["HAS_OPENED_TRUNK"],
-            "items": ["FLASHLIGHT", "CROWBAR"]
+            "readsStates": [],
+            "requiresStates": []
         }
     ]
 }

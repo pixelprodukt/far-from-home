@@ -3,9 +3,7 @@ import { RoomId } from '../RoomId.enum';
 
 export interface RoomDto {
     id: RoomId;
-    text: string;
+    description: string;
+    states: Record<string, boolean>;
     actions: ActionDto[];
-    actText?: string;
-    requires?: any[];
-    resolves?: any[];
 }

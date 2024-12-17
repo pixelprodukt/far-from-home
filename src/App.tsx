@@ -16,32 +16,34 @@ const App = () => {
 
     const [room, setRoom] = useState(gateRoomData);
     const [gamestate, setGamestate] = useState(GAMESTATE);
-    const [currentText, setCurrentText] = useState(room.text);
+    const [currentText, setCurrentText] = useState(room.description);
 
     const handleMoveToRoom = (roomId: string): void => {
         const room = roomHandler.getRoomById(roomId);
         setRoom(room);
-        setCurrentText(room.text);
+        setCurrentText(room.description);
     };
 
     const handleLook = (action: ActionDto): void => {
         // TODO: Stub
         console.log('handleLook:', action);
-        setCurrentText(action.resultText!);
+        setCurrentText(action.description!);
     };
 
     const handleItem = (action: ActionDto): void => {
         // TODO: Stub
         console.log('handleItem:', action);
+        /**
+         * Move items to inventory, something like this:
+         * action.items.forEach(item => this.inventory.add(item));
+         * 
+         * then delete action from room
+         * roomHandler.removeActionFromRoom(room.id, action.id);
+         */
     };
 
     const handle = (action: ActionDto): void => {
-        action.setsStates.forEach(state => {
-            if (!GAMESTATE[state]) {
-                GAMESTATE[state] = true;
-                setGamestate({ ...GAMESTATE });
-            }
-        });
+        setAllStatesForAction(action);
 
         switch (action.type) {
             case ActionType.MOVE:
@@ -56,6 +58,35 @@ const App = () => {
             default:
                 throw new Error();
         }
+    };
+
+    const allStatesForActionAreTrue = (action: ActionDto, room: RoomDto): boolean => {
+        return action.readsStates.map(state => {
+            const pathParts = state.split('.');
+            console.log('part one: ', pathParts[0]);
+            console.log('part two: ', pathParts[1]);
+    
+            if (pathParts[0] === 'GLOBAL' && pathParts[1].length) {
+                return gamestate[pathParts[1]];
+            } else if (pathParts[0] === room.id && pathParts[1].length) {
+                return room.states[pathParts[1]];
+            }
+        })
+        .every(bool => bool === true);
+    };
+
+    const setAllStatesForAction = (action: ActionDto) => {
+        action.setsStates.map(state => {
+            const pathParts = state.split('.');
+
+            if (pathParts[0] === 'GLOBAL' && pathParts[1].length) {
+                GAMESTATE[pathParts[1]] = true;
+                setGamestate({ ...GAMESTATE });
+            } 
+            if (pathParts[0] === room.id && pathParts[1].length) {
+                room.states[pathParts[1]] = true;
+            }
+        });
     };
 
     return (
@@ -76,8 +107,7 @@ const App = () => {
 
                 <div>
                     {room.actions.map((action, index) => {
-                        const hasAllRequiredStates = action.readsStates.map(state => gamestate[state]).every(bool => bool === true);
-                        if (hasAllRequiredStates || !action.readsStates.length) {
+                        if (allStatesForActionAreTrue(action, room) || !action.readsStates.length) {
                             return (
                                 <div key={index}>
                                     <TextButton onClick={() => { handle(action) }} title={`${index + 1}) ${action.label}`} />

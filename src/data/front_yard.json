@@ -1,34 +1,39 @@
 {
     "id": "FRONT_YARD",
-    "text": "A decorative fountain adorns the square in front of the manor. Once, a sorrowful little angel poured water into its basin, but now the edge is overgrown with weeds, and the angel's jug is cracked. Old flowerbeds line the path with sharp-edged underbrush that seems to wind around your ankles with every step. You can also see a narrow path which leads to the side of the house.",
+    "description": "A decorative fountain adorns the square in front of the manor. Once, a sorrowful little angel poured water into its basin, but now the edge is overgrown with weeds, and the angel's jug is cracked. Old flowerbeds line the path with sharp-edged underbrush that seems to wind around your ankles with every step. You can also see a narrow path which leads to the side of the house.",
+    "states": {},
     "actions": [
         {
             "type": "LOOK",
             "label": "Inspect the fountain.",
             "moveToRoomId": "FRONT_YARD",
             "setsStates": [],
-            "readsStates": []
+            "readsStates": [],
+            "requiresStates": []
         },
         {
             "type": "MOVE",
             "label": "Go to the front door.",
             "moveToRoomId": "FRONT_DOOR",
             "setsStates": [],
-            "readsStates": []
+            "readsStates": [],
+            "requiresStates": []
         },
         {
             "type": "MOVE",
             "label": "Go to the side of the house.",
             "moveToRoomId": "SIDEWALL",
             "setsStates": [],
-            "readsStates": []
+            "readsStates": [],
+            "requiresStates": []
         },
         {
             "type": "MOVE",
             "label": "Go back to the gate.",
             "moveToRoomId": "GATE",
             "setsStates": [],
-            "readsStates": []
+            "readsStates": [],
+            "requiresStates": []
         }
     ]
 }

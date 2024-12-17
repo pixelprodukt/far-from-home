@@ -1,0 +1,31 @@
+{
+    "id": "CAR",
+    "description": "You get into your car and wonder if you should just drive away. But the fuel tank doesn’t have much left, and you’re far from home. Instead, you press the button for the trunk, which pops open with a soft click.",
+    "states": {},
+    "actions": [
+        {
+            "type": "LOOK",
+            "label": "Search the trunk.",
+            "description": "You find a flashlight and a crowbar. Strange, you can’t even remember packing either of them.",
+            "readsStates": [],
+            "setsStates": ["CAR.itemsFound"],
+            "requiresStates": []
+        },
+        {
+            "type": "ITEM",
+            "label": "Take flashlight and crowbar.",
+            "readsStates": ["CAR.itemsFound"],
+            "setsStates": [],
+            "requiresStates": [],
+            "items": ["FLASHLIGHT", "CROWBAR"]
+        },
+        {
+            "type": "MOVE",
+            "label": "Go back to gate.",
+            "moveToRoomId": "GATE",
+            "setsStates": [],
+            "readsStates": [],
+            "requiresStates": []
+        }
+    ]
+}
