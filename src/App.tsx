@@ -27,6 +27,9 @@ const App = () => {
     const handleLook = (action: ActionDto): void => {
         // TODO: Stub
         console.log('handleLook:', action);
+        if (action.useOnlyOnce) {
+            action.readsStates.push("USED");
+        }
         setCurrentText(action.description!);
     };
 
@@ -40,6 +43,14 @@ const App = () => {
          * then delete action from room
          * roomHandler.removeActionFromRoom(room.id, action.id);
          */
+
+        /* action.items = [];
+        action.do = true;
+        setRoom({...room});
+        setCurrentText(room.description); */
+        if (action.useOnlyOnce) {
+            action.readsStates.push("USED");
+        }
     };
 
     const handle = (action: ActionDto): void => {
@@ -63,8 +74,6 @@ const App = () => {
     const allStatesForActionAreTrue = (action: ActionDto, room: RoomDto): boolean => {
         return action.readsStates.map(state => {
             const pathParts = state.split('.');
-            console.log('part one: ', pathParts[0]);
-            console.log('part two: ', pathParts[1]);
     
             if (pathParts[0] === 'GLOBAL' && pathParts[1].length) {
                 return gamestate[pathParts[1]];
@@ -89,6 +98,10 @@ const App = () => {
         });
     };
 
+    const showAction = (action: ActionDto): boolean => {
+        return (allStatesForActionAreTrue(action, room) || !action.readsStates.length);
+    };
+
     return (
         <>
             <div className='p-2 flex flex-wrap justify-end'>
@@ -107,7 +120,7 @@ const App = () => {
 
                 <div>
                     {room.actions.map((action, index) => {
-                        if (allStatesForActionAreTrue(action, room) || !action.readsStates.length) {
+                        if (showAction(action)) {
                             return (
                                 <div key={index}>
                                     <TextButton onClick={() => { handle(action) }} title={`${index + 1}) ${action.label}`} />

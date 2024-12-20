@@ -12,4 +12,5 @@ export interface ActionDto {
     setsStates: string[];
     readsStates: string[];
     requiresStates: string[];
+    useOnlyOnce?: boolean;
 }

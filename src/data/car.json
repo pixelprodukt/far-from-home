@@ -9,7 +9,8 @@
             "description": "You find a flashlight and a crowbar. Strange, you can’t even remember packing either of them.",
             "readsStates": [],
             "setsStates": ["CAR.itemsFound"],
-            "requiresStates": []
+            "requiresStates": [],
+            "useOnlyOnce": true
         },
         {
             "type": "ITEM",
@@ -17,7 +18,8 @@
             "readsStates": ["CAR.itemsFound"],
             "setsStates": [],
             "requiresStates": [],
-            "items": ["FLASHLIGHT", "CROWBAR"]
+            "items": ["FLASHLIGHT", "CROWBAR"],
+            "useOnlyOnce": true
         },
         {
             "type": "MOVE",
